@@ -1,0 +1,146 @@
+/* Application Section */
+.application-section {
+    padding: 6rem 0;
+    background-color: var(--light-gray);
+    position: relative;
+    overflow: hidden;
+}
+
+.application-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    flex-wrap: wrap; /* Ensures content wraps on smaller screens */
+}
+
+.app-text {
+    flex: 1;
+    max-width: 500px;
+}
+
+.app-title {
+    font-size: 2.8rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.app-description {
+    color: var(--dark-gray);
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.app-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.store-button {
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+}
+
+.store-button img {
+    width: 150px; /* Consistent size for both buttons */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.store-button:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.mockup-container {
+    flex: 1;
+    max-width: 400px;
+    position: relative;
+    margin-left: auto;
+}
+
+.phone-mockup {
+    width: 100%;
+    max-width: 300px;
+    position: relative;
+    filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.5));
+    animation: float 6s ease-in-out infinite;
+}
+
+.phone-frame {
+    width: 100%;
+    height: 560px;
+    background: var(--primary);
+    border-radius: 36px;
+    border: 8px solid #333;
+    overflow: hidden;
+    position: relative;
+}
+
+.app-screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent; /* Transparent background for the screen */
+}
+
+.app-screenshot {
+    width: 100%; /* Full-screen image */
+    height: 100%; /* Full-screen image */
+    object-fit: cover; /* Ensures the image fills the screen without distortion */
+    border-radius: 0; /* No rounded corners for full-screen effect */
+    background: transparent; /* Transparent background for the image */
+}
+
+/* Animation */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .application-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .mockup-container {
+        margin-left: 0;
+        margin-top: 2rem;
+    }
+
+    .app-buttons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .app-title {
+        font-size: 2.2rem;
+    }
+
+    .app-description {
+        font-size: 0.9rem;
+    }
+
+    .store-button img {
+        width: 130px; /* Smaller buttons for smaller screens */
+    }
+}

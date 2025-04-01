@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSR Initiatives - AnnitaPay</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* Importing relevant styles from the original document */
+        :root {
+            --primary: #001a57;
+            --secondary: #00c2ff;
+            --secondary-light: #33d0ff;
+            --white: #ffffff;
+            --light-gray: #f4f7fa;
+            --dark-gray: #4a4a4a;
+            --text: #333333;
+            --error: #ff3b30;
+            --border-color: #ddd;
+            --success: #34c759;
+            --accent: #4caf50;  /* New accent color for CSR */
+            --accent-light: #81c784;  /* Lighter version of accent */
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--light-gray);
+            color: var(--text);
+            line-height: 1.6;
+            width: 100%;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        html {
+            overflow-x: hidden;
+            width: 100%;
+            scroll-behavior: smooth;
+        }
+        /* Navigation */
+        header {
+            background-color: var(--primary);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 0 2rem;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo-text {
+            color: var(--white);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        .nav-links a[aria-label="CSR"] {
+            color: var(--accent-light);
+            font-weight: 700;
+            position: relative;
+        }
+        .nav-links a[aria-label="CSR"]::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent-light);
+            border-radius: 2px;
+        }
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-outline {
+            border: 2px solid var(--secondary);
+            color: var(--white);
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        .btn-primary {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        .btn-primary:hover {
+            background-color: var(--secondary-light);
+        }
+        .mobile-menu {
+            display: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        /* Hero Section for CSR */
+        .csr-hero {
+            background: linear-gradient(rgba(0, 26, 87, 0.8), rgba(0, 26, 87, 0.8)), url('https://via.placeholder.com/1920x600');
+            background-size: cover;
+            background-position: center;
+            padding: 10rem 2rem 5rem;
+            text-align: center;
+            color: var(--white);
+        }
+        .csr-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+        .csr-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1.2s ease-out;
+        }
+        .scroll-down {
+            display: inline-block;
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            color: var(--white);
+            animation: bounce 2s infinite;
+            transition: all 0.3s;
+        }
+        .scroll-down:hover {
+            color: var(--accent-light);
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+        /* Stats Section */
+        .csr-stats {
+            background-color: var(--accent);
+            padding: 3rem 0;
+            color: var(--white);
+        }
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .stat-item {
+            flex: 1;
+            padding: 0 1rem;
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        /* Main Content Section */
+        .csr-section {
+            padding: 4rem 0;
+            background-color: var(--white);
+            width: 100%;
+            margin: 0;
+        }
+        .section-header {
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            padding: 0 2rem;
+        }
+        .csr-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 1rem;
+            display: inline-block;
+        }
+        .csr-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            border-radius: 2px;
+        }
+        .csr-subtitle {
+            color: var(--dark-gray);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .csr-initiatives-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .csr-initiatives {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            width: 100%;
+        }
+        .csr-initiative {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            background-color: var(--white);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .csr-initiative:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        .csr-image-container {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        .csr-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .csr-initiative:hover .csr-image {
+            transform: scale(1.1);
+        }
+        .csr-initiative-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .csr-initiative h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .csr-initiative h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent);
+            border-radius: 50%;
+        }
+        .csr-initiative p {
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+        .csr-learn-more {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            align-self: flex-start;
+            margin-top: auto;
+        }
+        .csr-learn-more:hover {
+            background-color: var(--accent);
+            transform: translateX(5px);
+        }
+        /* Additional Initiatives Section */
+        .additional-initiatives {
+            padding: 4rem 0;
+            background-color: var(--light-gray);
+        }
+        .initiative-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .initiative-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        .initiative-item:hover {
+            transform: translateY(-5px);
+        }
+        .initiative-icon {
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            border-radius: 50%;
+            background-color: rgba(76, 175, 80, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+        .initiative-content h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        /* Testimonials */
+        .csr-testimonials {
+            background-color: var(--light-gray);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        .testimonials-title {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+        .testimonials-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .testimonial {
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 5rem;
+            color: var(--accent);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        .testimonial-position {
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+        }
+        /* Call to Action */
+        .csr-cta {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            padding: 4rem 0;
+            text-align: center;
+            color: var(--white);
+        }
+        .cta-title {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+        .cta-text {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        .cta-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--white);
+            color: var(--primary);
+            font-weight: 600;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .cta-btn:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: scale(1.05);
+        }
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+            width: 100vw;
+            margin: 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            width: 100%;
+            padding: 0 2rem;
+        }
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .footer-logo img {
+            height: 30px;
+            margin-right: 0.5rem;
+        }
+        .footer-about {
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        .social-link {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .social-link:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        .footer-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        .footer-links a {
+            color: var(--white);
+            opacity: 0.8;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        .contact-info {
+            list-style: none;
+        }
+        .contact-info li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .contact-info i {
+            width: 20px;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+            width: 100%;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+        .footer-country-dropdown {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.5rem;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+            width: 100%;
+        }
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            z-index: 99;
+        }
+        .back-to-top:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        /* Responsive Styling */
+        @media (max-width: 1024px) {
+            .stats-container {
+                flex-wrap: wrap;
+            }
+            .stat-item {
+                flex: 0 0 50%;
+                margin-bottom: 2rem;
+            }
+            .csr-hero h1 {
+                font-size: 2.8rem;
+            }
+            .initiative-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .nav-links, .auth-buttons {
+                display: none;
+            }
+            .mobile-menu {
+                display: block;
+            }
+            nav {
+                padding: 0 1rem;
+            }
+            .footer-grid {
+                padding: 0 1rem;
+            }
+            .copyright {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            .csr-hero h1 {
+                font-size: 2.5rem;
+            }
+            .csr-hero p {
+                font-size: 1.1rem;
+            }
+            .stat-item {
+                flex: 0 0 100%;
+            }
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            .csr-initiatives {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-text">AnnitaPay</div>
+            </div>
+            <ul class="nav-links">
+              <li><a href="index.html">Home</a></li>
+                <li><a href="#">Personal</a></li>
+                <li><a href="#">Business</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="csrpage.html" aria-label="CSR">CSR</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="loginpage.html" class="btn btn-outline">Login</a>
+                <a href="signuppage.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            <div class="mobile-menu">☰</div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="csr-hero" id="top">
+        <h1>Making a Difference Together</h1>
+        <p>At AnnitaPay, our Corporate Social Responsibility initiatives are at the heart of everything we do. We're committed to creating positive change in communities worldwide.</p>
+        <a href="#initiatives" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="csr-stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">$2.5M</div>
+                <div class="stat-label">Funds Invested</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">45+</div>
+                <div class="stat-label">Projects Supported</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">12K</div>
+                <div class="stat-label">People Impacted</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">18</div>
+                <div class="stat-label">Countries Reached</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CSR Section -->
+    <section class="csr-section" id="initiatives">
+        <div class="section-header">
+            <h2 class="csr-title">Our CSR Initiatives</h2>
+            <p class="csr-subtitle">At AnnitaPay, we believe in giving back to the community and creating a positive impact through thoughtful, sustainable programs.</p>
+        </div>
+        
+        <div class="csr-initiatives-container">
+            <div class="csr-initiatives">
+                <!-- Initiative 1 -->
+                <div class="csr-initiative">
+                    <div class="csr-image-container">
+                        <img src="https://via.placeholder.com/800x400" alt="Community Development" class="csr-image">
+                    </div>
+                    <div class="csr-initiative-content">
+                        <h3>Community Development</h3>
+                        <p>We invest in community development programs that focus on education, healthcare access, and infrastructure improvements in underserved areas around the world.</p>
+                        <a href="#" class="csr-learn-more">Learn more</a>
+                    </div>
+                </div>
+                
+                <!-- Initiative 2 -->
+                <div class="csr-initiative">
+                    <div class="csr-image-container">
+                        <img src="https://via.placeholder.com/800x400" alt="Environmental Sustainability" class="csr-image">
+                    </div>
+                    <div class="csr-initiative-content">
+                        <h3>Environmental Sustainability</h3>
+                        <p>Our commitment to the environment includes reducing carbon footprints, promoting recycling, and supporting green energy projects worldwide. We believe in creating a sustainable future for all.</p>
+                        <a href="#" class="csr-learn-more">Learn more</a>
+                    </div>
+                </div>
+                
+                <!-- Initiative 3 -->
+                <div class="csr-initiative">
+                    <div class="csr-image-container">
+                        <img src="https://via.placeholder.com/800x400" alt="Financial Inclusion" class="csr-image">
+                    </div>
+                    <div class="csr-initiative-content">
+                        <h3>Financial Inclusion</h3>
+                        <p>We work towards providing financial services to underserved communities, empowering them to achieve economic stability and growth through education and accessible banking solutions.</p>
+                        <a href="#" class="csr-learn-more">Learn more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Initiatives -->
+    <section class="additional-initiatives">
+        <div class="section-header">
+            <h2 class="csr-title">More Ways We Give Back</h2>
+            <p class="csr-subtitle">Our commitment to social responsibility extends across multiple areas of impact.</p>
+        </div>
+        
+        <div class="initiative-list">
+            <div class="initiative-item">
+                <div class="initiative-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="initiative-content">
+                    <h4>Educational Programs</h4>
+                    <p>Supporting schools and educational institutions with resources and technology to empower the next generation.</p>
+                </div>
+            </div>
+            
+            <div class="initiative-item">
+                <div class="initiative-icon">
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+                <div class="initiative-content">
+                    <h4>Disaster Relief</h4>
+                    <p>Providing immediate financial assistance and support to communities affected by natural disasters.</p>
+                </div>
+            </div>
+            
+            <div class="initiative-item">
+                <div class="initiative-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="initiative-content">
+                    <h4>Volunteer Programs</h4>
+                    <p>Our employees contribute thousands of volunteer hours annually to causes they care about.</p>
+                </div>
+            </div>
+            
+            <div class="initiative-item">
+                <div class="initiative-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <div class="initiative-content">
+                    <h4>Reforestation Projects</h4>
+                    <p>We've planted over 50,000 trees globally to combat deforestation and climate change.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="csr-testimonials">
+        <h2 class="testimonials-title">Impact Stories</h2>
+        <div class="testimonials-container">
+            <div class="testimonial">
+                <p class="testimonial-text">
+                    "The financial literacy program from AnnitaPay has transformed our community. Now our young people understand how to manage money and build businesses - something we never had access to before."
+                </p>
+                <p class="testimonial-author">Sarah Johnson</p>
+                <p class="testimonial-position">Community Leader, Oakridge</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="csr-cta">
+        <h2 class="cta-title">Join Us in Making a Difference</h2>
+        <p class="cta-text">
+            Want to partner with us on our CSR initiatives or learn how your organization can get involved? We're always looking for like-minded partners.
+        </p>
+        <a href="#" class="cta-btn">Get Involved</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">
+                    <div>AnnitaPay</div>
+                </div>
+                <p class="footer-about">
+                    AnnitaPay is a secure global payment platform helping individuals and businesses make seamless transactions worldwide.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3 class="footer-title">Products</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Personal Banking</a></li>
+                    <li><a href="#">Business Accounts</a></li>
+                    <li><a href="#">International Transfers</a></li>
+                    <li><a href="#">Currency Exchange</a></li>
+                    <li><a href="#">Payment Gateway</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-title">Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">CSR Initiatives</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-title">Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Community Forum</a></li>
+                    <li><a href="#">Security</a></li>
+                    <li><a href="#">API Documentation</a></li>
+                </ul>
+            </div>
+            <div>
+              <h3 class="footer-title">Contact</h3>
+              <ul class="contact-info">
+                  <li><i class="fas fa-envelope"></i> support@annitapay.com</li>
+                  <li><i class="fas fa-phone"></i> +1 (888) 123-4567</li>
+                  <li><i class="fas fa-map-marker-alt"></i> 123 Finance Street, Tech City, TC 10101</li>
+              </ul>
+              <select class="footer-country-dropdown">
+                  <option value="gl">Global - English</option>
+                  <option value="us">United States - English</option>
+                  <option value="uk">United Kingdom - English</option>
+                  <option value="ca">Canada - English</option>
+                  <option value="fr">France - Français</option>
+                  <option value="de">Germany - Deutsch</option>
+              </select>
+          </div>
+      </div>
+      
+      <div class="copyright">
+          &copy; 2025 AnnitaPay. All rights reserved. | <a href="#" style="color: inherit;">Privacy Policy</a> | <a href="#" style="color: inherit;">Terms of Service</a> | <a href="#" style="color: inherit;">Cookies Policy</a>
+      </div>
+  </footer>
+
+  <script>
+      let currentStep = 1;
+      const totalSteps = 4;
+      
+      function nextStep() {
+          if (currentStep < totalSteps) {
+              document.getElementById(`step-${currentStep}`).style.display = 'none';
+              currentStep++;
+              document.getElementById(`step-${currentStep}`).style.display = 'block';
+              updateProgress();
+              
+              // If we're on the review step, populate the review content
+              if (currentStep === 4) {
+                  populateReview();
+              }
+              
+              // Scroll to top of form
+              document.querySelector('.signup-form-container').scrollIntoView({ behavior: 'smooth' });
+          }
+      }
+      
+      function prevStep() {
+          if (currentStep > 1) {
+              document.getElementById(`step-${currentStep}`).style.display = 'none';
+              currentStep--;
+              document.getElementById(`step-${currentStep}`).style.display = 'block';
+              updateProgress();
+              
+              // Scroll to top of form
+              document.querySelector('.signup-form-container').scrollIntoView({ behavior: 'smooth' });
+          }
+      }
+      
+      function updateProgress() {
+          const progressBar = document.getElementById('signup-progress');
+          const progressPercentage = ((currentStep - 1) / (totalSteps - 1)) * 100;
+          progressBar.style.width = `${progressPercentage}%`;
+          
+          // Update step indicators
+          const steps = document.querySelectorAll('.step');
+          steps.forEach((step, index) => {
+              if (index + 1 < currentStep) {
+                  step.className = 'step completed';
+              } else if (index + 1 === currentStep) {
+                  step.className = 'step active';
+              } else {
+                  step.className = 'step';
+              }
+          });
+      }
+      
+      function togglePassword(inputId) {
+          const passwordInput = document.getElementById(inputId);
+          const toggleBtn = passwordInput.nextElementSibling;
+          const toggleIcon = toggleBtn.querySelector('i');
+          
+          if (passwordInput.type === 'password') {
+              passwordInput.type = 'text';
+              toggleIcon.classList.remove('fa-eye');
+              toggleIcon.classList.add('fa-eye-slash');
+          } else {
+              passwordInput.type = 'password';
+              toggleIcon.classList.remove('fa-eye-slash');
+              toggleIcon.classList.add('fa-eye');
+          }
+      }
+      
+      function showKycRequirements() {
+          const accountType = document.getElementById('account-type').value;
+          
+          // Hide all KYC details first
+          document.querySelectorAll('.kyc-details').forEach(el => {
+              el.style.display = 'none';
+          });
+          
+          // Show the selected one if it exists
+          const selectedKyc = document.getElementById(`${accountType}-kyc`);
+          if (selectedKyc) {
+              selectedKyc.style.display = 'block';
+          }
+      }
+      
+      function populateReview() {
+          // Get values from the form
+          const accountType = document.getElementById('account-type').value;
+          const firstName = document.getElementById('first-name').value;
+          const lastName = document.getElementById('last-name').value;
+          const email = document.getElementById('email').value;
+          const phone = document.getElementById('phone').value;
+          const country = document.getElementById('country').value;
+          const dob = document.getElementById('dob').value;
+          const address = document.getElementById('address').value;
+          const city = document.getElementById('city').value;
+          const postalCode = document.getElementById('postal-code').value;
+          
+          // Map account type value to display name
+          const accountTypeMap = {
+              'personal': 'Personal Account',
+              'business-freelancer': 'Business - Freelancer/Sole Trader',
+              'business-startup': 'Business - Startup',
+              'business-sme': 'Business - Small to Medium Enterprise',
+              'business-enterprise': 'Business - Enterprise',
+              'charity': 'Charity/Non-Profit',
+              'religious': 'Religious Institution'
+          };
+          
+          // Create review HTML
+          let reviewHTML = `
+              <h4>Account Type</h4>
+              <p>${accountTypeMap[accountType] || 'Not selected'}</p>
+              
+              <h4>Personal Information</h4>
+              <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+              <p><strong>Email:</strong> ${email}</p>
+              <p><strong>Phone:</strong> ${phone}</p>
+              <p><strong>Date of Birth:</strong> ${dob}</p>
+              
+              <h4>Address</h4>
+              <p>${address}</p>
+              <p>${city}, ${postalCode}</p>
+              <p>${document.getElementById('country').options[document.getElementById('country').selectedIndex].text}</p>
+              
+              <h4>Documents Uploaded</h4>
+              <p>ID Document: ${document.getElementById('id-document').files.length ? document.getElementById('id-document').files[0].name : 'Not uploaded'}</p>
+              <p>Proof of Address: ${document.getElementById('address-proof').files.length ? document.getElementById('address-proof').files[0].name : 'Not uploaded'}</p>
+              
+              <p class="requirement-list" style="margin-top: 1rem;">Please ensure all information is correct before submitting. You'll receive a confirmation email with next steps.</p>
+          `;
+          
+          // Set the HTML content of the review section
+          document.getElementById('review-content').innerHTML = reviewHTML;
+      }
+      
+      // Mobile menu toggle functionality
+      document.querySelector('.mobile-menu').addEventListener('click', function() {
+          const navLinks = document.querySelector('.nav-links');
+          const authButtons = document.querySelector('.auth-buttons');
+          
+          if (navLinks.style.display === 'flex') {
+              navLinks.style.display = 'none';
+              authButtons.style.display = 'none';
+          } else {
+              navLinks.style.display = 'flex';
+              navLinks.style.flexDirection = 'column';
+              navLinks.style.position = 'absolute';
+              navLinks.style.top = '100%';
+              navLinks.style.left = '0';
+              navLinks.style.width = '100%';
+              navLinks.style.backgroundColor = 'var(--primary)';
+              navLinks.style.padding = '1rem';
+              
+              authButtons.style.display = 'flex';
+              authButtons.style.flexDirection = 'column';
+              authButtons.style.width = '100%';
+              authButtons.style.padding = '1rem';
+              authButtons.style.backgroundColor = 'var(--primary)';
+              authButtons.style.position = 'absolute';
+              authButtons.style.top = 'calc(100% + ' + navLinks.offsetHeight + 'px)';
+              authButtons.style.left = '0';
+              authButtons.style.gap = '0.5rem';
+          }
+      });
+      
+      // Initialize the progress bar
+      updateProgress();
+  </script>
+</body>
+</html>

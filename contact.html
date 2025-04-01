@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - AnnitaPay</title>
+    <style>
+        /* Importing relevant styles from the original document */
+        :root {
+            --primary: #001a57;
+            --secondary: #00c2ff;
+            --white: #ffffff;
+            --light-gray: #f4f7fa;
+            --dark-gray: #4a4a4a;
+            --text: #333333;
+            --error: #ff3b30;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--light-gray);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        /* Navigation */
+        header {
+            background-color: var(--primary);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 40px;
+        }
+        .logo-text {
+            color: var(--white);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-outline {
+            border: 2px solid var(--secondary);
+            color: var(--white);
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        .btn-primary {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        .btn-primary:hover {
+            background-color: var(--secondary-light);
+        }
+        .mobile-menu {
+            display: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        /* Contact Form Section */
+        .contact-form-section {
+            padding: 8rem 0 5rem;
+            background-color: var(--white);
+        }
+        .contact-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact-form-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .contact-form-subtitle {
+            color: var(--dark-gray);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--secondary);
+        }
+        .contact-form textarea {
+            resize: none;
+            height: 150px;
+        }
+        .contact-form button {
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact-form button:hover {
+            background-color: var(--secondary-light);
+        }
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .footer-logo img {
+            height: 30px;
+            margin-right: 0.5rem;
+        }
+        .footer-about {
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        .social-link {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .social-link:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        .footer-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        .footer-links a {
+            color: var(--white);
+            opacity: 0.8;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        .contact-info {
+            list-style: none;
+        }
+        .contact-info li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .contact-info i {
+            width: 20px;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <div class="logo-text">AnnitaPay</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Personal</a></li>
+                <li><a href="#">Business</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="csrpage.html" aria-label="CSR">CSR</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="loginpage.html" class="btn btn-outline">Login</a>
+                <a href="signuppage.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            <div class="mobile-menu">☰</div>
+        </nav>
+    </header>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+        <div class="container contact-form-container">
+            <h2 class="contact-form-title">Contact Us</h2>
+            <p class="contact-form-subtitle">We'd love to hear from you! Fill out the form below to get in touch.</p>
+            <form class="contact-form" action="#" method="POST">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <input type="text" placeholder="Subject" required>
+                <textarea placeholder="Your Message"></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        AnnitaPay
+                    </div>
+                    <p class="footer-about">Revolutionizing payments across Africa with secure, accessible financial services for businesses and individuals.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">f</a>
+                        <a href="#" class="social-link">in</a>
+                        <a href="#" class="social-link">t</a>
+                        <a href="#" class="social-link">ig</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="footer-title">Products</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Digital Wallets</a></li>
+                        <li><a href="#">Payment Gateway</a></li>
+                        <li><a href="#">Money Transfer</a></li>
+                        <li><a href="#">Bill Payments</a></li>
+                        <li><a href="#">Business Analytics</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-title">Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Vision</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Partners</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-title">Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                        <li><a href="#">Developer Hub</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Security</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-title">Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i>📍</i> Monrovia, Liberia</li>
+                        <li><i>📞</i> +31 88 621 3748</li>
+                        <li><i>✉️</i> annitapayllc@gmail.com</li>
+                    </ul>
+                    <div class="footer-country-selector">
+                        <label for="footer-country">Select Your Country:</label>
+                        <select id="footer-country" class="footer-country-dropdown">
+                            <option value="liberia">Liberia</option>
+                            <option value="nigeria">Nigeria</option>
+                            <option value="kenya">Kenya</option>
+                            <option value="south-africa">South Africa</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 AnnitaPay. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

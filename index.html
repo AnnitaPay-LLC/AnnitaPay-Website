@@ -1,0 +1,1919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnnitaPay - Africa's Digital Heartbeat</title>
+    <style>
+        :root {
+            --primary: #001a57;
+            --primary-light: #002680;
+            --secondary: #00c2ff;
+            --secondary-light: #7ddeff;
+            --white: #ffffff;
+            --light-gray: #f4f7fa;
+            --dark-gray: #4a4a4a;
+            --text: #333333;
+            --error: #ff3b30;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Navigation */
+        header {
+            background-color: var(--primary);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        .logo-text {
+            color: var(--white);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--secondary);
+            color: var(--white);
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-light);
+        }
+        
+        .mobile-menu {
+            display: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            padding: 8rem 0 4rem;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .hero-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: var(--dark-gray);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            background-color: var(--secondary);
+            color: var(--primary);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .feature-text {
+            color: var(--dark-gray);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background-color: var(--light-gray);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-image {
+            height: 200px;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .service-text {
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+        
+        .service-link {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        
+        /* USP Section */
+        .usp {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+        }
+        
+        .usp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .usp-item {
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .usp-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        .usp-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .usp-text {
+            opacity: 0.9;
+        }
+        
+        /* Waitlist Section */
+        .waitlist {
+            padding: 5rem 0;
+            background-color: var(--white);
+            text-align: center;
+        }
+        
+        .waitlist-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .waitlist-form {
+            display: flex;
+            max-width: 500px;
+            margin: 2rem auto 0;
+        }
+        
+        .waitlist-input {
+            flex: 1;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid #ddd;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        .waitlist-input:focus {
+            border-color: var(--secondary);
+        }
+        
+        .waitlist-button {
+            background-color: var(--secondary);
+            color: var(--primary);
+            font-weight: 600;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            padding: 0 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .waitlist-button:hover {
+            background-color: var(--secondary-light);
+        }
+        
+        /* App Download Section */
+        .app-download {
+            padding: 5rem 0;
+            background-color: var(--light-gray);
+        }
+        
+        .app-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+        
+        .app-text {
+            flex: 1;
+            max-width: 500px;
+        }
+        
+        .app-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .app-description {
+            color: var(--dark-gray);
+            margin-bottom: 2rem;
+        }
+        
+        .app-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .app-button {
+            display: flex;
+            align-items: center;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .app-button:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .app-button-icon {
+            font-size: 1.8rem;
+            margin-right: 0.8rem;
+        }
+        
+        .app-button-text {
+            text-align: left;
+        }
+        
+        .app-button-small {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        .app-button-large {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .app-image {
+            flex: 1;
+            max-width: 400px;
+        }
+        
+        .app-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 5rem 0;
+            background-color: var(--white);
+        }
+        
+        .faq-grid {
+            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .faq-item {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background-color: var(--light-gray);
+            padding: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question:after {
+            content: '+';
+            font-size: 1.5rem;
+        }
+        
+        .faq-answer {
+            padding: 1.2rem;
+            border-top: 1px solid #ddd;
+            display: none;
+        }
+        
+        .faq-item.active .faq-question:after {
+            content: '-';
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 5rem 0;
+            background-color: var(--white);
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .cta-text {
+            margin-bottom: 2rem;
+            color: var(--dark-gray);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        /* Terms & Policy */
+        .legal {
+            padding: 5rem 0;
+            background-color: var(--light-gray);
+        }
+        
+        .legal-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 1rem;
+        }
+        
+        .legal-tab {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--white);
+            color: var(--dark-gray);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .legal-tab.active {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .legal-content {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .legal-section {
+            display: none;
+        }
+        
+        .legal-section.active {
+            display: block;
+        }
+        
+        .legal-title {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .legal-text {
+            margin-bottom: 1.5rem;
+        }
+        
+        .legal-subheading {
+            color: var(--primary);
+            margin: 1.5rem 0 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo img {
+            height: 30px;
+            margin-right: 0.5rem;
+        }
+        
+        .footer-about {
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        
+        .footer-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            opacity: 0.8;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .contact-info i {
+            width: 20px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .hero-title, .app-title, .cta-title, .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .app-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .app-buttons {
+                justify-content: center;
+            }
+            
+            .waitlist-form {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .waitlist-input {
+                border-radius: 5px;
+            }
+            
+            .waitlist-button {
+                border-radius: 5px;
+                padding: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links, .auth-buttons {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .hero-text, .hero-image {
+                text-align: center;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title, .app-title, .cta-title {
+                font-size: 1.8rem;
+            }
+            
+            .legal-tabs {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <div class="logo-text">AnnitaPay</div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Personal</a></li>
+                <li><a href="#">Business</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="csrpage.html" aria-label="CSR">CSR</a></li>
+            </ul>
+            
+            <div class="auth-buttons">
+                <a href="loginpage.html" class="btn btn-outline">Login</a>
+                <a href="signuppage.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            
+            <div class="mobile-menu">☰</div>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Africa's Digital Heartbeat</h1>
+                <p class="hero-subtitle">Revolutionizing payments across Africa with secure, accessible financial services for businesses and individuals, even in the most remote communities.</p>
+                <div class="hero-buttons">
+                    <a href="signuppage.html" class="btn btn-primary">Get Started</a>
+                    <a href="aboutus.html" class="btn btn-outline">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/annitapay-logo.png.jpeg" alt="AnnitaPay Digital Wallet">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Transforming Financial Access</h2>
+            <p class="section-subtitle">Our digital payment solutions are designed to make transactions seamless, secure, and accessible for everyone.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title">Secure Transactions</h3>
+                    <p class="feature-text">End-to-end encryption and robust security measures ensure your money and data stay protected at all times.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💸</div>
+                    <h3 class="feature-title">Low Transfer Fees</h3>
+                    <p class="feature-text">Enjoy affordable transactions with capped forex rates and fair fee structures designed for African markets.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title">Offline Solutions</h3>
+                    <p class="feature-text">Access financial services via USSD & SMS even without internet connection, bridging the digital divide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Trusted By Section with Auto-Sliding Carousel -->
+<section class="trusted-by">
+  <div class="container">
+      <h2 class="section-title">Trusted By</h2>
+      <p class="section-subtitle">We're proud to partner with leading businesses across Africa</p>
+      
+      <div class="logo-carousel-container">
+          <div class="logo-carousel">
+              <div class="logo-slide">
+                  <img src="images/Wakanow.jpg" alt="Partner Logo 1">
+              </div>
+              <div class="logo-slide">
+                  <img src="images/Annita's Logo.jpg" alt="Partner Logo 2">
+              </div>
+              <div class="logo-slide">
+                  <img src="/api/placeholder/180/80" alt="Partner Logo 3">
+              </div>
+              <div class="logo-slide">
+                  <img src="/api/placeholder/180/80" alt="Partner Logo 4">
+              </div>
+              <div class="logo-slide">
+                  <img src="/api/placeholder/180/80" alt="Partner Logo 5">
+              </div>
+              <div class="logo-slide">
+                  <img src="/api/placeholder/180/80" alt="Partner Logo 6">
+              </div>
+              <div class="logo-slide">
+                  <img src="/api/placeholder/180/80" alt="Partner Logo 7">
+              </div>
+              <div class="logo-slide">
+                  <img src="/api/placeholder/180/80" alt="Partner Logo 8">
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<style>
+/* Trusted By Section Styles */
+.trusted-by {
+  padding: 4rem 0;
+  background-color: var(--white);
+  overflow: hidden;
+}
+
+.logo-carousel-container {
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 2rem 0;
+}
+
+.logo-carousel {
+  display: flex;
+  width: 400%; /* Creates enough width for duplicated slides */
+  animation: scroll 30s linear infinite;
+}
+
+.logo-slide {
+  width: calc(25% / 4); /* 4 visible logos at a time on desktop */
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.logo-slide:hover {
+  opacity: 1;
+}
+
+.logo-slide img {
+  max-width: 100%;
+  height: auto;
+  filter: grayscale(100%);
+  transition: filter 0.3s;
+}
+
+.logo-slide img:hover {
+  filter: grayscale(0%);
+}
+
+@keyframes scroll {
+  0% {
+      transform: translateX(0);
+  }
+  100% {
+      transform: translateX(-50%); /* Only scroll through half so it appears seamless */
+  }
+}
+
+/* Pause animation on hover */
+.logo-carousel-container:hover .logo-carousel {
+  animation-play-state: paused;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .logo-slide {
+      width: calc(25% / 3); /* 3 visible logos at a time on tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-slide {
+      width: calc(25% / 2); /* 2 visible logos at a time on mobile */
+      padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-slide {
+      width: calc(25% / 1); /* 1 visible logo at a time on small mobile */
+  }
+  
+  .logo-carousel {
+      animation-duration: 20s; /* Faster on mobile */
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Clone the slides to ensure smooth infinite scrolling
+  const carousel = document.querySelector('.logo-carousel');
+  const slides = document.querySelectorAll('.logo-slide');
+  
+  // Clone slides to create a seamless loop
+  slides.forEach(slide => {
+      const clone = slide.cloneNode(true);
+      carousel.appendChild(clone);
+  });
+  
+  // Optional: Add pause on hover functionality
+  const carouselContainer = document.querySelector('.logo-carousel-container');
+  
+  carouselContainer.addEventListener('mouseenter', () => {
+      carousel.style.animationPlayState = 'paused';
+  });
+  
+  carouselContainer.addEventListener('mouseleave', () => {
+      carousel.style.animationPlayState = 'running';
+  });
+});
+</script>
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Comprehensive financial tools designed for businesses and individuals across Africa.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">💼</div>
+                    <div class="service-content">
+                        <h3 class="service-title">Business Solutions</h3>
+                        <p class="service-text">Digital wallets, payment gateways, and business insights tailored for MSMEs across Africa.</p>
+                        <a href="#" class="service-link">Learn More →</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">👤</div>
+                    <div class="service-content">
+                        <h3 class="service-title">Personal Accounts</h3>
+                        <p class="service-text">Easy-to-use digital wallets for everyday transactions, bill payments, and money transfers.</p>
+                        <a href="#" class="service-link">Learn More →</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">🌍</div>
+                    <div class="service-content">
+                        <h3 class="service-title">Cross-Border Payments</h3>
+                        <p class="service-text">Send and receive money internationally with competitive rates and multiple payout options.</p>
+                        <a href="#" class="service-link">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+<!-- USP Section -->
+<section class="usp">
+  <div class="container">
+    <h2 class="section-title"> Why Choose AnnitaPay</h2>
+    <p class="section-subtitle"> Our unique approach to financial services is transforming how Africa transacts.</p>
+    
+    <div class="usp-grid">
+      <div class="usp-item">
+        <div class="usp-icon">💰</div>
+        <h3 class="usp-title">Flexible Fee Models</h3>
+        <p class="usp-text">Affordable transactions with capped forex rates and fair fee structures.</p>
+      </div>
+      
+      <div class="usp-item">
+        <div class="usp-icon">🔄</div>
+        <h3 class="usp-title">Multiple Channels</h3>
+        <p class="usp-text">Mobile money, bank transfers, and cash pickups ensure accessibility.</p>
+      </div>
+      
+      <div class="usp-item">
+        <div class="usp-icon">💳</div>
+        <h3 class="usp-title">Dual-Platform Wallets</h3>
+        <p class="usp-text">Optimized for both senders and receivers, supporting local and international transactions.</p>
+      </div>
+      
+      <div class="usp-item">
+        <div class="usp-icon">📲</div>
+        <h3 class="usp-title">Offline Solutions</h3>
+        <p class="usp-text">Bridging the digital divide with SMS and USSD-based transactions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* USP Section Styles */
+.usp {
+  padding: 5rem 0;
+  background-color: #f8f9fa;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #666;
+}
+
+.usp-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.usp-item {
+  background-color: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.usp-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.usp-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.usp-title {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.usp-text {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .usp-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
+  
+  .usp-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .usp-item {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .usp {
+    padding: 3rem 0;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .usp-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .usp-title {
+    font-size: 1.2rem;
+  }
+}
+</style>
+
+    <!-- Waitlist Section -->
+    <section class="waitlist">
+        <div class="container">
+            <div class="waitlist-content">
+                <h2 class="section-title">Join Our Waitlist</h2>
+                <p class="section-subtitle">Be among the first to experience the future of African payments. Enter your email to join our waitlist and receive early access.</p>
+                
+                <form class="waitlist-form">
+                    <input type="email" class="waitlist-input" placeholder="Enter your email address" required>
+                    <button type="submit" class="waitlist-button">Submit email</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+<!-- Application Section -->
+<section class="application-section">
+    <div class="container application-content">
+        <!-- Text Content -->
+        <div class="app-text">
+            <h2 class="app-title">Join Millions of Users Trusting AnnitaPay</h2>
+            <p class="app-description">
+                Simplify your financial life with AnnitaPay. Whether you're sending money, paying bills, or managing your business, AnnitaPay has you covered.
+            </p>
+            <!-- App Store Buttons -->
+            <div class="app-buttons">
+                <a href="#" class="store-button google-play">
+                    <img src="images/google_play_button-removebg-preview.png" alt="Google Play Store">
+                </a>
+                <a href="#" class="store-button app-store">
+                    <img src="images/Download_on_the_App_Store_Badge.svg-removebg-preview.png" alt="Apple App Store">
+                </a>
+            </div>
+        </div>
+        <!-- App Image (Phone Mockup) -->
+        <div class="mockup-container">
+            <div class="phone-mockup">
+                <div class="phone-frame">
+                    <div class="app-screen">
+                        <!-- Full-Screen App Screenshot -->
+                        <img src="images/annitapay-logo.png.jpeg" alt="App Screenshot" class="app-screenshot">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- FAQ Section -->
+<section class="faq">
+  <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-subtitle">Find answers to common questions about AnnitaPay services.</p>
+      
+      <div class="faq-grid">
+          <div class="faq-item">
+              <div class="faq-question">What is AnnitaPay?</div>
+              <div class="faq-answer">
+                  <p>AnnitaPay is a digital financial service designed to revolutionize payments across Africa. We provide secure, accessible, and affordable financial services for businesses and individuals, even in remote communities. Our platform offers digital wallets, payment gateways, cross-border transfers, and other financial tools tailored for the African market.</p>
+              </div>
+          </div>
+
+          <div class="faq-item">
+              <div class="faq-question">How do I create an account?</div>
+              <div class="faq-answer">
+                  <p>Creating an account with AnnitaPay is easy and free. Download our mobile app from Google Play or the App Store, click on "Sign Up," and provide the required information such as your name, email, phone number, and a secure password. Verify your identity through SMS or email confirmation, and you’re ready to start using AnnitaPay.</p>
+              </div>
+          </div>
+
+          <div class="faq-item">
+              <div class="faq-question">How do I add money to my AnnitaPay wallet?</div>
+              <div class="faq-answer">
+                  <p>You can add money to your AnnitaPay wallet through various methods, including linking your bank account, using mobile money services, or visiting a partner agent for a cash deposit.</p>
+              </div>
+          </div>
+
+          <div class="faq-item">
+              <div class="faq-question">Is AnnitaPay secure?</div>
+              <div class="faq-answer">
+                  <p>Yes, AnnitaPay employs advanced security measures such as encryption, two-factor authentication (2FA), and fraud detection systems to ensure the safety of your transactions and personal information.</p>
+              </div>
+          </div>
+
+          <div class="faq-item">
+              <div class="faq-question">How can I withdraw money from my AnnitaPay wallet?</div>
+              <div class="faq-answer">
+                  <p>You can withdraw money from your AnnitaPay wallet by transferring it to your linked bank account, sending it to a mobile money account, or cashing out at a partner location.</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll(".faq-question").forEach(question => {
+      question.addEventListener("click", () => {
+        const item = question.parentElement;
+        item.classList.toggle("active");
+      });
+    });
+  });
+</script>
+
+    <!-- CTA Section -->
+    <section class="cta">
+      <div class="container">
+          <div class="cta-content">
+              <h2 class="cta-title">Ready to Transform Your Finances?</h2>
+              <p class="cta-text">Join thousands of businesses and individuals already using AnnitaPay to simplify their financial lives.</p>
+              <div class="cta-buttons">
+                  <a href="signuppage.html" class="btn btn-primary">Create Account</a>
+                  <a href="contactsales.html" class="btn btn-outline">Contact Sales</a>
+              </div>
+          </div>
+      </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+        <div>
+            <div class="footer-logo">
+                <div>AnnitaPay</div>
+            </div>
+            <p class="footer-about">
+                AnnitaPay is a secure global payment platform helping individuals and businesses make seamless transactions worldwide.
+            </p>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div>
+            <h3 class="footer-title">Products</h3>
+            <ul class="footer-links">
+                <li><a href="#">Personal Banking</a></li>
+                <li><a href="#">Business Accounts</a></li>
+                <li><a href="#">International Transfers</a></li>
+                <li><a href="#">Currency Exchange</a></li>
+                <li><a href="#">Payment Gateway</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="footer-title">Company</h3>
+            <ul class="footer-links">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Press</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">CSR Initiatives</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="footer-title">Support</h3>
+            <ul class="footer-links">
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Community Forum</a></li>
+                <li><a href="#">Security</a></li>
+                <li><a href="#">API Documentation</a></li>
+            </ul>
+        </div>
+        <div>
+          <h3 class="footer-title">Contact</h3>
+          <ul class="contact-info">
+              <li><i class="fas fa-envelope"></i> support@annitapay.com</li>
+              <li><i class="fas fa-phone"></i> +1 (888) 123-4567</li>
+              <li><i class="fas fa-map-marker-alt"></i> 123 Finance Street, Tech City, TC 10101</li>
+          </ul>
+          <select class="footer-country-dropdown">
+              <option value="gl">Global - English</option>
+              <option value="us">United States - English</option>
+              <option value="uk">United Kingdom - English</option>
+              <option value="ca">Canada - English</option>
+              <option value="fr">France - Français</option>
+              <option value="de">Germany - Deutsch</option>
+          </select>
+      </div>
+  </div>
+  
+  <div class="copyright">
+      &copy; 2025 AnnitaPay. All rights reserved. | <a href="#" style="color: inherit;">Privacy Policy</a> | <a href="#" style="color: inherit;">Terms of Service</a> | <a href="#" style="color: inherit;">Cookies Policy</a>
+  </div>
+</footer>
+
+<script>
+  let currentStep = 1;
+  const totalSteps = 4;
+  
+  function nextStep() {
+      if (currentStep < totalSteps) {
+          document.getElementById(`step-${currentStep}`).style.display = 'none';
+          currentStep++;
+          document.getElementById(`step-${currentStep}`).style.display = 'block';
+          updateProgress();
+          
+          // If we're on the review step, populate the review content
+          if (currentStep === 4) {
+              populateReview();
+          }
+          
+          // Scroll to top of form
+          document.querySelector('.signup-form-container').scrollIntoView({ behavior: 'smooth' });
+      }
+  }
+  
+  function prevStep() {
+      if (currentStep > 1) {
+          document.getElementById(`step-${currentStep}`).style.display = 'none';
+          currentStep--;
+          document.getElementById(`step-${currentStep}`).style.display = 'block';
+          updateProgress();
+          
+          // Scroll to top of form
+          document.querySelector('.signup-form-container').scrollIntoView({ behavior: 'smooth' });
+      }
+  }
+  
+  function updateProgress() {
+      const progressBar = document.getElementById('signup-progress');
+      const progressPercentage = ((currentStep - 1) / (totalSteps - 1)) * 100;
+      progressBar.style.width = `${progressPercentage}%`;
+      
+      // Update step indicators
+      const steps = document.querySelectorAll('.step');
+      steps.forEach((step, index) => {
+          if (index + 1 < currentStep) {
+              step.className = 'step completed';
+          } else if (index + 1 === currentStep) {
+              step.className = 'step active';
+          } else {
+              step.className = 'step';
+          }
+      });
+  }
+  
+  function togglePassword(inputId) {
+      const passwordInput = document.getElementById(inputId);
+      const toggleBtn = passwordInput.nextElementSibling;
+      const toggleIcon = toggleBtn.querySelector('i');
+      
+      if (passwordInput.type === 'password') {
+          passwordInput.type = 'text';
+          toggleIcon.classList.remove('fa-eye');
+          toggleIcon.classList.add('fa-eye-slash');
+      } else {
+          passwordInput.type = 'password';
+          toggleIcon.classList.remove('fa-eye-slash');
+          toggleIcon.classList.add('fa-eye');
+      }
+  }
+  
+  function showKycRequirements() {
+      const accountType = document.getElementById('account-type').value;
+      
+      // Hide all KYC details first
+      document.querySelectorAll('.kyc-details').forEach(el => {
+          el.style.display = 'none';
+      });
+      
+      // Show the selected one if it exists
+      const selectedKyc = document.getElementById(`${accountType}-kyc`);
+      if (selectedKyc) {
+          selectedKyc.style.display = 'block';
+      }
+  }
+  
+  function populateReview() {
+      // Get values from the form
+      const accountType = document.getElementById('account-type').value;
+      const firstName = document.getElementById('first-name').value;
+      const lastName = document.getElementById('last-name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const country = document.getElementById('country').value;
+      const dob = document.getElementById('dob').value;
+      const address = document.getElementById('address').value;
+      const city = document.getElementById('city').value;
+      const postalCode = document.getElementById('postal-code').value;
+      
+      // Map account type value to display name
+      const accountTypeMap = {
+          'personal': 'Personal Account',
+          'business-freelancer': 'Business - Freelancer/Sole Trader',
+          'business-startup': 'Business - Startup',
+          'business-sme': 'Business - Small to Medium Enterprise',
+          'business-enterprise': 'Business - Enterprise',
+          'charity': 'Charity/Non-Profit',
+          'religious': 'Religious Institution'
+      };
+      
+      // Create review HTML
+      let reviewHTML = `
+          <h4>Account Type</h4>
+          <p>${accountTypeMap[accountType] || 'Not selected'}</p>
+          
+          <h4>Personal Information</h4>
+          <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone}</p>
+          <p><strong>Date of Birth:</strong> ${dob}</p>
+          
+          <h4>Address</h4>
+          <p>${address}</p>
+          <p>${city}, ${postalCode}</p>
+          <p>${document.getElementById('country').options[document.getElementById('country').selectedIndex].text}</p>
+          
+          <h4>Documents Uploaded</h4>
+          <p>ID Document: ${document.getElementById('id-document').files.length ? document.getElementById('id-document').files[0].name : 'Not uploaded'}</p>
+          <p>Proof of Address: ${document.getElementById('address-proof').files.length ? document.getElementById('address-proof').files[0].name : 'Not uploaded'}</p>
+          
+          <p class="requirement-list" style="margin-top: 1rem;">Please ensure all information is correct before submitting. You'll receive a confirmation email with next steps.</p>
+      `;
+      
+      // Set the HTML content of the review section
+      document.getElementById('review-content').innerHTML = reviewHTML;
+  }
+  
+  // Mobile menu toggle functionality
+  document.querySelector('.mobile-menu').addEventListener('click', function() {
+      const navLinks = document.querySelector('.nav-links');
+      const authButtons = document.querySelector('.auth-buttons');
+      
+      if (navLinks.style.display === 'flex') {
+          navLinks.style.display = 'none';
+          authButtons.style.display = 'none';
+      } else {
+          navLinks.style.display = 'flex';
+          navLinks.style.flexDirection = 'column';
+          navLinks.style.position = 'absolute';
+          navLinks.style.top = '100%';
+          navLinks.style.left = '0';
+          navLinks.style.width = '100%';
+          navLinks.style.backgroundColor = 'var(--primary)';
+          navLinks.style.padding = '1rem';
+          
+          authButtons.style.display = 'flex';
+          authButtons.style.flexDirection = 'column';
+          authButtons.style.width = '100%';
+          authButtons.style.padding = '1rem';
+          authButtons.style.backgroundColor = 'var(--primary)';
+          authButtons.style.position = 'absolute';
+          authButtons.style.top = 'calc(100% + ' + navLinks.offsetHeight + 'px)';
+          authButtons.style.left = '0';
+          authButtons.style.gap = '0.5rem';
+      }
+  });
+  
+  // Initialize the progress bar
+  updateProgress();
+</script>
+</body>
+</html>
+
+  <script src="scripts/scripts.js"></script>
+</body>
+</html>
+    <!-- Review Popup After 3 Minutes -->
+    <script>
+      setTimeout(function() {
+          alert("Thank you for visiting AnnitaPay! Please take a moment to leave us a review.");
+      }, 180000); // 3 minutes = 180000 milliseconds
+  </script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="scripts.js"></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnnitaPay AI Chat Toggle</title>
+    <style>
+        :root {
+            --primary: #001a57;
+            --secondary: #00c2ff;
+            --white: #ffffff;
+            --light-gray: #f4f7fa;
+            --dark-gray: #4a4a4a;
+        }
+        
+        /* Chat Toggle Button */
+        .ai-chat-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .ai-chat-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+        
+        .ai-chat-toggle img {
+            width: 40px;
+            height: 40px;
+        }
+        
+        /* Chat Window */
+        .ai-chat-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 380px;
+            height: 500px;
+            background-color: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            z-index: 999;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .ai-chat-container.active {
+            display: flex;
+        }
+        
+        .ai-chat-header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .ai-chat-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .ai-chat-title img {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .ai-chat-close {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .ai-chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: var(--light-gray);
+        }
+        
+        .ai-message {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 12px 16px;
+            border-radius: 18px 18px 18px 4px;
+            margin-bottom: 15px;
+            max-width: 80%;
+            align-self: flex-start;
+        }
+        
+        .user-message {
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 12px 16px;
+            border-radius: 18px 18px 4px 18px;
+            margin-bottom: 15px;
+            max-width: 80%;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+        
+        .ai-chat-input {
+            padding: 15px;
+            border-top: 1px solid #eee;
+            display: flex;
+            background-color: var(--white);
+        }
+        
+        .ai-chat-input input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+            font-size: 14px;
+        }
+        
+        .ai-chat-input button {
+            background-color: var(--secondary);
+            color: var(--primary);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Toggle Notification Badge */
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #ff3b30;
+            color: white;
+            font-size: 12px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Tooltip */
+        .tooltip {
+            position: absolute;
+            bottom: 85px;
+            right: 20px;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .ai-chat-toggle:hover .tooltip {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Typing Indicator */
+        .typing-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin: 10px 0;
+        }
+        
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #ccc;
+            border-radius: 50%;
+            animation: typing-animation 1.4s infinite ease-in-out both;
+        }
+        
+        .typing-dot:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+        
+        .typing-dot:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+        
+        @keyframes typing-animation {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 480px) {
+            .ai-chat-container {
+                width: 100%;
+                height: 100%;
+                bottom: 0;
+                right: 0;
+                border-radius: 0;
+            }
+            
+            .ai-chat-toggle {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- AI Chat Toggle Button -->
+    <div class="ai-chat-toggle">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJDNi40NzcgMiAyIDYuNDc3IDIgMTJDMiAxNC4xMzYgMi43MzEgMTYuMTE1IDQgMTcuNjU3VjIyTDguMzQzIDE5LjkzMkM5LjUgMjAuNjE2IDEwLjgxNSAyMSAxMiAyMUMxNy41MjMgMjEgMjIgMTYuNTIzIDIyIDEyQzIyIDYuNDc3IDE3LjUyMyAyIDEyIDJaIiBmaWxsPSIjMDAxYTU3Ii8+CjxwYXRoIGQ9Ik0xMC41IDEyLjVDMTAuNSAxMy4wNSAxMC4wNSAxMy41IDkuNSAxMy41QzguOTUgMTMuNSA4LjUgMTMuMDUgOC41IDEyLjVDOC41IDExLjk1IDguOTUgMTEuNSA5LjUgMTEuNUMxMC4wNSAxMS41IDEwLjUgMTEuOTUgMTAuNSAxMi41WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTEyLjUgMTIuNUMxMi41IDEzLjA1IDEyLjA1IDEzLjUgMTEuNSAxMy41QzEwLjk1IDEzLjUgMTAuNSAxMy4wNSAxMC41IDEyLjVDMTAuNSAxMS45NSAxMC45NSAxMS41IDExLjUgMTEuNUMxMi4wNSAxMS41IDEyLjUgMTEuOTUgMTIuNSAxMi41WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTE0LjUgMTIuNUMxNC41IDEzLjA1IDE0LjA1IDEzLjUgMTMuNSAxMy41QzEyLjk1IDEzLjUgMTIuNSAxMy4wNSAxMi41IDEyLjVDMTIuNSAxMS45NSAxMi45NSAxMS41IDEzLjUgMTEuNUMxNC4wNSAxMS41IDE0LjUgMTEuOTUgMTQuNSAxMi41WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==" alt="Annita AI Chat" width="24" height="24">
+        <div class="notification-badge">1</div>
+        <div class="tooltip">Ask Annita AI!</div>
+    </div>
+    
+    <!-- AI Chat Window -->
+    <div class="ai-chat-container">
+        <div class="ai-chat-header">
+            <div class="ai-chat-title">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJDNi40NzcgMiAyIDYuNDc3IDIgMTJDMiAxNC4xMzYgMi43MzEgMTYuMTE1IDQgMTcuNjU3VjIyTDguMzQzIDE5LjkzMkM5LjUgMjAuNjE2IDEwLjgxNSAyMSAxMiAyMUMxNy41MjMgMjEgMjIgMTYuNTIzIDIyIDEyQzIyIDYuNDc3IDE3LjUyMyAyIDEyIDJaIiBmaWxsPSIjMDBjMmZmIi8+CjxwYXRoIGQ9Ik0xMC41IDEyLjVDMTAuNSAxMy4wNSAxMC4wNSAxMy41IDkuNSAxMy41QzguOTUgMTMuNSA4LjUgMTMuMDUgOC41IDEyLjVDOC41IDExLjk1IDguOTUgMTEuNSA5LjUgMTEuNUMxMC4wNSAxMS41IDEwLjUgMTEuOTUgMTAuNSAxMi41WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTEyLjUgMTIuNUMxMi41IDEzLjA1IDEyLjA1IDEzLjUgMTEuNSAxMy41QzEwLjk1IDEzLjUgMTAuNSAxMy4wNSAxMC41IDEyLjVDMTAuNSAxMS45NSAxMC45NSAxMS41IDExLjUgMTEuNUMxMi4wNSAxMS41IDEyLjUgMTEuOTUgMTIuNSAxMi41WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTE0LjUgMTIuNUMxNC41IDEzLjA1IDE0LjA1IDEzLjUgMTMuNSAxMy41QzEyLjk1IDEzLjUgMTIuNSAxMy4wNSAxMi41IDEyLjVDMTIuNSAxMS45NSAxMi45NSAxMS41IDEzLjUgMTEuNUMxNC4wNSAxMS41IDE0LjUgMTEuOTUgMTQuNSAxMi41WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==" alt="Annita AI">
+                <span>Annita AI Assistant</span>
+            </div>
+            <button class="ai-chat-close">&times;</button>
+        </div>
+        <div class="ai-chat-messages">
+            <div class="ai-message">
+                Hello! I'm Annita AI, your personal assistant for AnnitaPay. How can I help you today?
+            </div>
+            <div class="typing-indicator">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            </div>
+        </div>
+        <div class="ai-chat-input">
+            <input type="text" placeholder="Type your message here..." aria-label="Message input">
+            <button type="submit">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 2L2 10L9 13L13 22L22 2Z" fill="#001a57"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatToggle = document.querySelector('.ai-chat-toggle');
+            const chatContainer = document.querySelector('.ai-chat-container');
+            const chatClose = document.querySelector('.ai-chat-close');
+            const chatInput = document.querySelector('.ai-chat-input input');
+            const chatSend = document.querySelector('.ai-chat-input button');
+            const chatMessages = document.querySelector('.ai-chat-messages');
+            const notificationBadge = document.querySelector('.notification-badge');
+            const typingIndicator = document.querySelector('.typing-indicator');
+            
+            // Hide typing indicator initially
+            setTimeout(() => {
+                typingIndicator.style.display = 'none';
+            }, 2000);
+            
+            // Toggle chat window
+            chatToggle.addEventListener('click', function() {
+                chatContainer.classList.toggle('active');
+                notificationBadge.style.display = 'none';
+            });
+            
+            // Close chat window
+            chatClose.addEventListener('click', function() {
+                chatContainer.classList.remove('active');
+            });
+            
+            // Send message function
+            function sendMessage() {
+                const messageText = chatInput.value.trim();
+                if (messageText) {
+                    // Add user message
+                    const userMessageElement = document.createElement('div');
+                    userMessageElement.classList.add('user-message');
+                    userMessageElement.textContent = messageText;
+                    chatMessages.appendChild(userMessageElement);
+                    
+                    // Clear input
+                    chatInput.value = '';
+                    
+                    // Scroll to bottom
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                    
+                    // Show typing indicator
+                    typingIndicator.style.display = 'inline-flex';
+                    
+                    // Simulate AI response after delay
+                    setTimeout(() => {
+                        typingIndicator.style.display = 'none';
+                        
+                        // Add AI response
+                        const aiMessageElement = document.createElement('div');
+                        aiMessageElement.classList.add('ai-message');
+                        
+                        // Simple AI responses based on user message
+                        let aiResponse = "I'm connecting to our knowledge base. Could you provide more details about your question?";
+                        
+                        if (messageText.toLowerCase().includes('account')) {
+                            aiResponse = "To create an account with AnnitaPay, download our app and click 'Sign Up'. You'll need to provide some basic information and verification. Need more help with account setup?";
+                        } else if (messageText.toLowerCase().includes('transfer') || messageText.toLowerCase().includes('send money')) {
+                            aiResponse = "AnnitaPay offers multiple ways to transfer money. You can send to other AnnitaPay users, bank accounts, or for cash pickup. Our fees are competitive with capped forex rates.";
+                        } else if (messageText.toLowerCase().includes('fee') || messageText.toLowerCase().includes('charge')) {
+                            aiResponse = "AnnitaPay offers transparent and affordable fee structures. Transfer fees typically range from 1-3% depending on the destination and method. Would you like to see our complete fee schedule?";
+                        } else if (messageText.toLowerCase().includes('business')) {
+                            aiResponse = "AnnitaPay offers tailored solutions for businesses including payment gateways, digital wallets, and business insights specifically designed for African markets.";
+                        }
+                        
+                        aiMessageElement.textContent = aiResponse;
+                        chatMessages.appendChild(aiMessageElement);
+                        
+                        // Scroll to bottom
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    }, 1500);
+                }
+            }
+            
+            // Send message on button click
+            chatSend.addEventListener('click', sendMessage);
+            
+            // Send message on Enter key
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+            
+            // Show chat window automatically after 10 seconds if not already opened
+            setTimeout(() => {
+                if (!chatContainer.classList.contains('active')) {
+                    notificationBadge.style.display = 'flex';
+                }
+            }, 10000);
+        });
+    </script>
+</body>
+</html>

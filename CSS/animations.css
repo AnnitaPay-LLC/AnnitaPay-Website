@@ -1,0 +1,40 @@
+/* Hover Effects */
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+.service-card:hover {
+  transform: translateY(-5px);
+}
+.usp-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+.ai-chat-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+/* Typing Indicator Animation */
+.typing-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin: 10px 0;
+}
+.typing-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #ccc;
+  border-radius: 50%;
+  animation: typing-animation 1.4s infinite ease-in-out both;
+}
+.typing-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+.typing-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+@keyframes typing-animation {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
