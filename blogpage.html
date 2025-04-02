@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - AnnitaPay</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* Importing relevant styles from the original document */
+        :root {
+            --primary: #001a57;
+            --secondary: #00c2ff;
+            --secondary-light: #33d0ff;
+            --white: #ffffff;
+            --light-gray: #f4f7fa;
+            --dark-gray: #4a4a4a;
+            --text: #333333;
+            --error: #ff3b30;
+            --border-color: #ddd;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--light-gray);
+            color: var(--text);
+            line-height: 1.6;
+            width: 100%;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        html {
+            overflow-x: hidden;
+            width: 100%;
+        }
+        /* Navigation */
+        header {
+            background-color: var(--primary);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 0 2rem;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo-text {
+            color: var(--white);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        .nav-links a.active {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-outline {
+            border: 2px solid var(--secondary);
+            color: var(--white);
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        .btn-primary {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        .btn-primary:hover {
+            background-color: var(--secondary-light);
+        }
+        .mobile-menu {
+            display: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Blog Page Specific Styles */
+        .blog-hero {
+            background: linear-gradient(rgba(0, 26, 87, 0.8), rgba(0, 26, 87, 0.9)), url('/api/placeholder/1400/500');
+            background-size: cover;
+            background-position: center;
+            padding: 8rem 0 4rem;
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .blog-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .blog-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+        .blog-hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .blog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .blog-search {
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+        .blog-search input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .blog-search button {
+            background-color: var(--secondary);
+            color: var(--primary);
+            border: none;
+            border-radius: 5px;
+            padding: 0 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .blog-filter {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .blog-filter button {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .blog-filter button:hover, 
+        .blog-filter button.active {
+            background-color: var(--secondary);
+            color: var(--primary);
+            border-color: var(--secondary);
+        }
+        
+        .blog-layout {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 2rem;
+        }
+        
+        .featured-post {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        .featured-post-image {
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+        }
+        .featured-post-content {
+            padding: 2rem;
+        }
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+        .post-category {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .featured-post h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        .featured-post p {
+            margin-bottom: 1.5rem;
+        }
+        .read-more {
+            display: inline-block;
+            color: var(--secondary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .read-more:hover {
+            color: var(--primary);
+        }
+        
+        .post-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .post-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        .post-card:hover {
+            transform: translateY(-5px);
+        }
+        .post-card-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        .post-card-content {
+            padding: 1.5rem;
+        }
+        .post-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+        
+        .blog-sidebar {
+            position: sticky;
+            top: 100px;
+        }
+        .sidebar-section {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        .sidebar-title {
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            color: var(--primary);
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .popular-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .popular-post {
+            display: flex;
+            gap: 1rem;
+        }
+        .popular-post-image {
+            width: 60px;
+            height: 60px;
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+        }
+        .popular-post-content h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+        .popular-post-content p {
+            font-size: 0.8rem;
+            color: var(--dark-gray);
+        }
+        
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .tag {
+            display: inline-block;
+            background-color: var(--light-gray);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+        .tag:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        
+        .subscribe-form input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        .subscribe-form button {
+            width: 100%;
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .subscribe-form button:hover {
+            background-color: var(--secondary-light);
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 3rem 0;
+        }
+        .pagination-item {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--white);
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s;
+        }
+        .pagination-item:hover, 
+        .pagination-item.active {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+            width: 100vw;
+            margin: 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            width: 100%;
+            padding: 0 2rem;
+        }
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .footer-logo img {
+            height: 30px;
+            margin-right: 0.5rem;
+        }
+        .footer-about {
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        .social-link {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .social-link:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        .footer-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        .footer-links a {
+            color: var(--white);
+            opacity: 0.8;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        .contact-info {
+            list-style: none;
+        }
+        .contact-info li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .contact-info i {
+            width: 20px;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+            width: 100%;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+        .footer-country-dropdown {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.5rem;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+            width: 100%;
+        }
+        
+        /* Responsive styling */
+        @media (max-width: 900px) {
+            .blog-layout {
+                grid-template-columns: 1fr;
+            }
+            .featured-post-image {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links, .auth-buttons {
+                display: none;
+            }
+            .mobile-menu {
+                display: block;
+            }
+            nav {
+                padding: 0 1rem;
+            }
+            .blog-hero h1 {
+                font-size: 2.2rem;
+            }
+            .post-grid {
+                grid-template-columns: 1fr;
+            }
+            .featured-post h2 {
+                font-size: 1.6rem;
+            }
+            .footer-grid {
+                padding: 0 1rem;
+            }
+            .copyright {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-text">AnnitaPay</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Personal</a></li>
+                <li><a href="#">Business</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="csrpage.html">CSR</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signuppage.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            <div class="mobile-menu">☰</div>
+        </nav>
+    </header>
+
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+        <div class="blog-hero-content">
+            <h1>AnnitaPay Insights</h1>
+            <p>Stay updated with the latest in fintech, payments solutions, and financial trends across Africa. Discover how AnnitaPay is revolutionizing the financial landscape.</p>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <div class="blog-container">
+        <!-- Search and Filter -->
+        <div class="blog-search">
+            <input type="text" placeholder="Search articles...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        
+        <div class="blog-filter">
+            <button class="active">All</button>
+            <button>Fintech</button>
+            <button>Payments</button>
+            <button>Business</button>
+            <button>Security</button>
+            <button>User Guides</button>
+            <button>Case Studies</button>
+            <button>News</button>
+        </div>
+        
+        <!-- Main Blog Layout -->
+        <div class="blog-layout">
+            <!-- Main Content -->
+            <div class="blog-main">
+                <!-- Featured Post -->
+                <article class="featured-post">
+                    <div class="featured-post-image" style="background-image: url('/api/placeholder/800/400');"></div>
+                    <div class="featured-post-content">
+                        <div class="post-meta">
+                            <span class="post-category">Fintech</span>
+                            <span><i class="far fa-calendar"></i> April 1, 2025</span>
+                            <span><i class="far fa-user"></i> By AnnitaPay Team</span>
+                        </div>
+                        <h2>The Future of Cross-Border Payments in Africa</h2>
+                        <p>Africa's cross-border payment landscape is rapidly evolving. With the African Continental Free Trade Area (AfCFTA) gaining momentum, businesses are seeking faster, cheaper, and more transparent ways to send and receive payments across borders. AnnitaPay is at the forefront of this revolution, leveraging cutting-edge technology to dismantle traditional barriers.</p>
+                        <p>This article explores emerging trends, regulatory developments, and technological innovations shaping the future of cross-border payments in Africa.</p>
+                        <a href="#" class="read-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <!-- Regular Posts Grid -->
+                <div class="post-grid">
+                    <!-- Post 1 -->
+                    <article class="post-card">
+                        <div class="post-card-image" style="background-image: url('/api/placeholder/400/200');"></div>
+                        <div class="post-card-content">
+                            <div class="post-meta">
+                                <span class="post-category">Business</span>
+                                <span><i class="far fa-calendar"></i> March 28, 2025</span>
+                            </div>
+                            <h3>5 Ways SMEs Can Optimize Payment Processes</h3>
+                            <p>Streamlining payment workflows can significantly improve cash flow and reduce administrative overhead for small businesses.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </article>
+                    
+                    <!-- Post 2 -->
+                    <article class="post-card">
+                        <div class="post-card-image" style="background-image: url('/api/placeholder/400/200');"></div>
+                        <div class="post-card-content">
+                            <div class="post-meta">
+                                <span class="post-category">Security</span>
+                                <span><i class="far fa-calendar"></i> March 25, 2025</span>
+                            </div>
+                            <h3>Securing Digital Payments: Best Practices for Consumers</h3>
+                            <p>Learn how to protect yourself from common fraud tactics and ensure your digital payment information remains secure.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </article>
+                    
+                    <!-- Post 3 -->
+                    <article class="post-card">
+                        <div class="post-card-image" style="background-image: url('/api/placeholder/400/200');"></div>
+                        <div class="post-card-content">
+                            <div class="post-meta">
+                                <span class="post-category">Payments</span>
+                                <span><i class="far fa-calendar"></i> March 20, 2025</span>
+                            </div>
+                            <h3>The Rise of Mobile Money in West Africa</h3>
+                            <p>Mobile money adoption continues to accelerate across West Africa, transforming how people manage and transfer funds.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </article>
+                    
+                    <!-- Post 4 -->
+                    <article class="post-card">
+                        <div class="post-card-image" style="background-image: url('/api/placeholder/400/200');"></div>
+                        <div class="post-card-content">
+                            <div class="post-meta">
+                                <span class="post-category">Case Studies</span>
+                                <span><i class="far fa-calendar"></i> March 15, 2025</span>
+                            </div>
+                            <h3>How GreenLife Farms Expanded Operations with AnnitaPay</h3>
+                            <p>Learn how this agricultural business streamlined payments to farmers and expanded into three new countries.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </article>
+                    
+                    <!-- Post 5 -->
+                    <article class="post-card">
+                        <div class="post-card-image" style="background-image: url('/api/placeholder/400/200');"></div>
+                        <div class="post-card-content">
+                            <div class="post-meta">
+                                <span class="post-category">Fintech</span>
+                                <span><i class="far fa-calendar"></i> March 10, 2025</span>
+                            </div>
+                            <h3>Understanding Central Bank Digital Currencies (CBDCs)</h3>
+                            <p>What are CBDCs and how might they impact the future of payments in Africa? We break down the fundamentals.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </article>
+                    
+                    <!-- Post 6 -->
+                    <article class="post-card">
+                        <div class="post-card-image" style="background-image: url('/api/placeholder/400/200');"></div>
+                        <div class="post-card-content">
+                            <div class="post-meta">
+                                <span class="post-category">User Guides</span>
+                                <span><i class="far fa-calendar"></i> March 5, 2025</span>
+                            </div>
+                            <h3>Getting Started with AnnitaPay Business Dashboard</h3>
+                            <p>A comprehensive guide to navigating and maximizing the features of your AnnitaPay business account.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </article>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="pagination">
+                    <a href="#" class="pagination-item"><i class="fas fa-chevron-left"></i></a>
+                    <a href="#" class="pagination-item active">1</a>
+                    <a href="#" class="pagination-item">2</a>
+                    <a href="#" class="pagination-item">3</a>
+                    <a href="#" class="pagination-item">4</a>
+                    <a href="#" class="pagination-item"><i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="blog-sidebar">
+                <!-- Popular Posts -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Popular Posts</h3>
+                    <div class="popular-posts">
+                        <div class="popular-post">
+                            <div class="popular-post-image" style="background-image: url('/api/placeholder/100/100');"></div>
+                            <div class="popular-post-content">
+                                <h4>AnnitaPay Expands to East Africa</h4>
+                                <p>March 18, 2025</p>
+                            </div>
+                        </div>
+                        <div class="popular-post">
+                            <div class="popular-post-image" style="background-image: url('/api/placeholder/100/100');"></div>
+                            <div class="popular-post-content">
+                                <h4>How to Protect Your Business from Payment Fraud</h4>
+                                <p>March 12, 2025</p>
+                            </div>
+                        </div>
+                        <div class="popular-post">
+                            <div class="popular-post-image" style="background-image: url('/api/placeholder/100/100');"></div>
+                            <div class="popular-post-content">
+                                <h4>Digital Wallets vs. Traditional Banking</h4>
+                                <p>March 5, 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Categories -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Fintech (18)</a></li>
+                        <li><a href="#">Payments (24)</a></li>
+                        <li><a href="#">Business (15)</a></li>
+                        <li><a href="#">Security (12)</a></li>
+                        <li><a href="#">User Guides (9)</a></li>
+                        <li><a href="#">Case Studies (7)</a></li>
+                        <li><a href="#">News (21)</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Tags -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Tags</h3>
+                    <div class="tag-cloud">
+                        <a href="#" class="tag">Payments</a>
+                        <a href="#" class="tag">Digital Wallet</a>
+                        <a href="#" class="tag">Mobile Money</a>
+                        <a href="#" class="tag">Security</a>
+                        <a href="#" class="tag">SME</a>
+                        <a href="#" class="tag">Liberia</a>
+                        <a href="#" class="tag">Nigeria</a>
+                        <a href="#" class="tag">Kenya</a>
+                        <a href="#" class="tag">Cross-Border</a>
+                        <a href="#" class="tag">Banking</a>
+                        <a href="#" class="tag">APIs</a>
+                        <a href="#" class="tag">Innovation</a>
+                    </div>
+                </div>
+                
+                <!-- Newsletter -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Newsletter</h3>
+                    <p>Subscribe to our newsletter for the latest updates and insights.</p>
+                    <form class="subscribe-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">
+                    AnnitaPay
+                </div>
+                <p class="footer-about">Revolutionizing payments across Africa with secure, accessible financial services for businesses and individuals.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3 class="footer-title">Products</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Digital Wallets</a></li>
+                    <li><a href="#">Payment Gateway</a></li>
+                    <li><a href="#">Money Transfer</a></li>
+                    <li><a href="#">Bill Payments</a></li>
+                    <li><a href="#">Business Analytics</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-title">Company</h3>
+                <ul class="footer-links">
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="#">Our Vision</a></li>
+                    <li><a href="#">Our Vision</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="csrpage.html">CSR</a></li>
+                    <li><a href="#">Press Kit</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-title">Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-title">Contact</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Finance Street, Monrovia, Liberia</li>
+                    <li><i class="fas fa-phone"></i> +231 770 123 456</li>
+                    <li><i class="fas fa-envelope"></i> support@annitapay.com</li>
+                </ul>
+                <select class="footer-country-dropdown">
+                    <option value="lib">Liberia (English)</option>
+                    <option value="nga">Nigeria (English)</option>
+                    <option value="gha">Ghana (English)</option>
+                    <option value="ken">Kenya (English)</option>
+                    <option value="rwa">Rwanda (English)</option>
+                </select>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 AnnitaPay. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        const authButtons = document.querySelector('.auth-buttons');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            authButtons.style.display = authButtons.style.display === 'flex' ? 'none' : 'flex';
+            
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.backgroundColor = 'var(--primary)';
+                navLinks.style.padding = '1rem';
+                
+                authButtons.style.flexDirection = 'column';
+                authButtons.style.position = 'absolute';
+                authButtons.style.top = 'calc(100% + ' + navLinks.offsetHeight + 'px)';
+                authButtons.style.left = '0';
+                authButtons.style.width = '100%';
+                authButtons.style.backgroundColor = 'var(--primary)';
+                authButtons.style.padding = '1rem';
+            }
+        });
+        
+        // Filter buttons functionality
+        const filterButtons = document.querySelectorAll('.blog-filter button');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                // Here you would typically filter the blog posts based on the selected category
+            });
+        });
+        
+        // Search functionality
+        const searchInput = document.querySelector('.blog-search input');
+        const searchButton = document.querySelector('.blog-search button');
+        
+        searchButton.addEventListener('click', () => {
+            const searchTerm = searchInput.value.trim();
+            if (searchTerm) {
+                // Implement search functionality here
+                console.log('Searching for:', searchTerm);
+            }
+        });
+        
+        // Email subscription functionality
+        const subscribeForm = document.querySelector('.subscribe-form');
+        
+        subscribeForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = subscribeForm.querySelector('input').value.trim();
+            if (email) {
+                // Implement subscription logic here
+                console.log('Subscribing email:', email);
+                alert('Thank you for subscribing to our newsletter!');
+                subscribeForm.reset();
+            }
+        });
+    </script>
+</body>
+</html>
