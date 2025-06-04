@@ -1,21 +1,92 @@
-MIT License
+📜 LICENSE – Proprietary & Confidential
+© 2025 AnnitaPay LLC. All Rights Reserved.
+🌐 www.annitapay.com | 📩 info@annitapay.com
 
-Copyright (c) 2025 Christopher O. Fallah
+🚫 NOT OPEN SOURCE – STRICTLY PROPRIETARY
+This software, platform, and all associated materials—including but not limited to codebases, infrastructure, APIs, databases, architecture, documentation, logos, trademarks, smart contracts, algorithms, and financial protocols—are the exclusive intellectual property of AnnitaPay LLC (“AnnitaPay”), a regulated entity and subsidiary of the Annita Ecosystem.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Unauthorized access, duplication, modification, reverse engineering, sublicensing, or distribution—whether for commercial, educational, or personal use—is strictly forbidden and may result in civil penalties or criminal prosecution under applicable international IP laws.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+🛡️ LEGAL ENFORCEMENT & IP PROTECTION
+AnnitaPay LLC enforces full proprietary rights and legal protections over all core components, including:
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Stablecoin orchestration engines
+
+Cross-border settlement infrastructure
+
+API & SDK orchestration layers
+
+Gas-abstracted blockchain integrations
+
+Cryptographic security protocols
+
+AI-enhanced risk management and compliance systems
+
+Wallet, card, and digital identity infrastructure
+
+Offline transaction capabilities for low-connectivity regions
+
+Embedded finance & digital banking modules
+
+UX/UI frameworks and system design assets
+
+Mobile & hardware-level integrations
+
+Internal developer and operational tooling
+
+All technology innovations, financial architecture, and AI/ML logic powering AnnitaPay’s operations are protected under U.S., European, African Union, ECOWAS, and global IP frameworks.
+
+🌍 GLOBAL JURISDICTIONAL COVERAGE
+This license is enforceable across all current and future territories where AnnitaPay operates or intends to operate, including:
+
+United States & Canada
+
+European Union & UK
+
+African Union & ECOWAS Member States
+
+UAE & BRICS+ aligned economies
+
+Asia-Pacific financial zones
+
+Offshore fintech regulatory sandboxes
+
+Our legal and compliance teams, in partnership with international IP watchdogs, continuously monitor for violations using blockchain watermarking, digital IP fingerprinting, and smart contract compliance hooks.
+
+💼 USE BY AUTHORIZED PARTNERS & INTERNAL TEAMS ONLY
+Access to this repository is restricted solely to AnnitaPay’s internal engineers, NDA-bound contractors, licensed banking and fintech partners, and authorized global agents.
+
+If you are not part of an officially contracted relationship and have access, you must report and cease all interaction immediately.
+
+📩 For access verification, contact: legal@annitapay.com
+
+🧠 STABLECOIN & BLOCKCHAIN INFRASTRUCTURE
+This repository may interface with or power:
+
+Bridge™-style multi-currency stablecoin orchestration
+
+Real-time FX conversion engines
+
+Permissioned blockchain nodes for regulatory compliance
+
+Onchain/offchain financial data layers
+
+Digital wallet creation at scale (KYC-compliant)
+
+Offline-first architecture for underbanked regions
+
+AnnitaCard™ infrastructure for global spendability
+
+Interoperable agent/banking network with cross-border functionality
+
+These systems are enterprise-grade and protected under proprietary fintech and cryptographic licensing frameworks.
+
+📝 CONTACT & COMPLIANCE
+For legal inquiries, licensing, partnership, or enterprise integrations, contact:
+
+AnnitaPay LLC — Legal Affairs
+📧 legal@annitapay.com
+🌐 www.annitapay.com
+
+AnnitaPay™, Annita™, and the Annita Ecosystem™ are trademarks of Annita LLC. All rights reserved.
+This codebase is not open-source. All rights strictly reserved. Unauthorized use will be prosecuted.
